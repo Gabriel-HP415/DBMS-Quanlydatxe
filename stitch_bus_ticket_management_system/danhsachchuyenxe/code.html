@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BusTicket Pro - Trips List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#c4c7c9",
+                      "on-tertiary-container": "#eff1f3",
+                      "on-primary-fixed": "#00174b",
+                      "surface-variant": "#d8e3fb",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-tint": "#0053db",
+                      "secondary-fixed": "#d3e4fe",
+                      "inverse-surface": "#263143",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "surface": "#f9f9ff",
+                      "on-tertiary": "#ffffff",
+                      "surface-bright": "#f9f9ff",
+                      "on-primary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-surface-variant": "#434655",
+                      "on-secondary-fixed": "#0b1c30",
+                      "outline": "#737686",
+                      "on-tertiary-fixed-variant": "#444749",
+                      "surface-container": "#e7eeff",
+                      "secondary-container": "#d0e1fb",
+                      "on-surface": "#111c2d",
+                      "on-background": "#111c2d",
+                      "surface-container-highest": "#d8e3fb",
+                      "on-secondary-container": "#54647a",
+                      "surface-container-low": "#f0f3ff",
+                      "surface-container-high": "#dee8ff",
+                      "inverse-on-surface": "#ecf1ff",
+                      "surface-dim": "#cfdaf2",
+                      "on-primary-container": "#eeefff",
+                      "outline-variant": "#c3c6d7",
+                      "on-secondary": "#ffffff",
+                      "primary-container": "#2563eb",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "secondary": "#505f76",
+                      "primary": "#004ac6",
+                      "on-error": "#ffffff",
+                      "inverse-primary": "#b4c5ff",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "on-tertiary-fixed": "#191c1e",
+                      "tertiary-container": "#6b6e70",
+                      "tertiary-fixed": "#e0e3e5",
+                      "background": "#f9f9ff",
+                      "on-error-container": "#93000a",
+                      "primary-fixed": "#dbe1ff",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "tertiary": "#525657"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "md": "16px",
+                      "container-max": "1280px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Inter"],
+                      "title-sm": ["Inter"],
+                      "body-md": ["Inter"],
+                      "table-data": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "label-md": ["Inter"],
+                      "display-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "title-sm": ["18px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "table-data": ["14px", {"lineHeight": "20px", "fontWeight": "450"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:flex-row">
+<!-- Top Navigation (Mobile Only) -->
+<header class="md:hidden sticky top-0 z-50 bg-surface w-full shadow-sm">
+<div class="flex justify-between items-center w-full px-md h-16 max-w-container-max mx-auto border-b border-outline-variant">
+<div class="text-title-sm font-title-sm font-bold text-primary">BusTicket Pro</div>
+<button class="text-on-surface-variant p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Side Navigation (Desktop Only) -->
+<nav class="hidden md:flex fixed left-0 top-0 h-full w-[240px] bg-surface border-r border-outline-variant flex-col p-md gap-sm z-40">
+<div class="mb-lg">
+<h1 class="font-headline-md text-headline-md text-primary font-bold">BusTicket Pro</h1>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Management System</p>
+</div>
+<div class="flex flex-col gap-sm flex-grow">
+<a class="flex items-center gap-3 p-3 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">home</span>
+                Home
+            </a>
+<a class="flex items-center gap-3 p-3 rounded-lg bg-secondary-container text-on-secondary-container font-bold font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">directions_bus</span>
+                Trips
+            </a>
+<a class="flex items-center gap-3 p-3 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">confirmation_number</span>
+                My Tickets
+            </a>
+<a class="flex items-center gap-3 p-3 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+                Admin
+            </a>
+</div>
+<div class="mt-auto border-t border-outline-variant pt-md flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A clean, professional headshot avatar of an administrative user, light mode aesthetic, soft lighting, neutral background, realistic rendering." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6QOjhI8uzx7rHnPGcWgVe-NwsD04JyqpqQ4ik9stuWViG8_D3xkK4G-2avTJhS2xWB1ifE4JvkJh8pJ6SsCoqihLOJe5LF_1v-KF9cnkJSwOdNHNDNwQJvuLuFytCpukwrovGScLxl1TbwdCK227Kvqh5eXYTE96cRbyQPd9zlLV60lxAVj3U5M3RUcrq1aCsOM-V11eX3gEkRVs4WMJmPec_VReVVkryTDBZ9aIHr1VrvD6r6Qi-fBkHiqSeHnWwtqAdddeJhMSm"/>
+<div class="flex flex-col">
+<span class="font-title-sm text-[14px] font-semibold text-on-surface">Admin User</span>
+<span class="font-label-md text-[10px] text-on-surface-variant">System Admin</span>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow md:ml-[240px] flex flex-col min-h-screen">
+<div class="p-md md:p-lg lg:p-xl max-w-container-max mx-auto w-full flex-grow flex flex-col gap-lg">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface">Bus Trips</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage and schedule intercity bus routes.</p>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-title-sm text-title-sm flex items-center gap-2 hover:bg-on-primary-fixed-variant transition-colors shadow-sm">
+<span class="material-symbols-outlined">add</span>
+                    New Trip
+                </button>
+</div>
+<!-- Search & Filter Bar (Bento style card) -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Departure (Điểm đi)</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">location_on</span>
+<input class="w-full pl-10 pr-4 py-2 rounded border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary-fixed bg-surface-bright text-on-surface font-body-md text-body-md transition-all" placeholder="Select City" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Destination (Điểm đến)</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">pin_drop</span>
+<input class="w-full pl-10 pr-4 py-2 rounded border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary-fixed bg-surface-bright text-on-surface font-body-md text-body-md transition-all" placeholder="Select City" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Date (Ngày)</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">calendar_today</span>
+<input class="w-full pl-10 pr-4 py-2 rounded border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary-fixed bg-surface-bright text-on-surface font-body-md text-body-md transition-all" type="date"/>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface-container-highest text-on-surface px-4 py-2 rounded border border-outline-variant hover:bg-surface-dim transition-colors font-title-sm text-title-sm h-[42px]">
+                            Clear
+                        </button>
+<button class="flex-2 bg-primary text-on-primary px-4 py-2 rounded hover:bg-on-primary-fixed-variant transition-colors font-title-sm text-title-sm flex items-center justify-center gap-2 h-[42px] shadow-sm">
+<span class="material-symbols-outlined">search</span>
+                            Search
+                        </button>
+</div>
+</div>
+</section>
+<!-- Data Table Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden flex-grow flex flex-col">
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<h3 class="font-title-sm text-title-sm text-on-surface font-semibold">Active Schedules (CHUYENXE)</h3>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span>Showing 1-5 of 124</span>
+<button class="p-1 hover:bg-surface-container rounded"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
+<button class="p-1 hover:bg-surface-container rounded"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[900px]">
+<thead>
+<tr class="bg-surface-container-lowest border-b border-outline-variant">
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Mã chuyến</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Tuyến xe</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Điểm đi</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Điểm đến</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Ngày khởi hành</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Giờ</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant text-right whitespace-nowrap">Giá vé</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant text-center whitespace-nowrap">Số ghế còn</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant text-right whitespace-nowrap">Actions</th>
+</tr>
+</thead>
+<tbody class="font-table-data text-table-data text-on-surface divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest hover:bg-[#F1F5F9] transition-colors group">
+<td class="py-3 px-4 font-mono text-xs font-semibold">CX-1024</td>
+<td class="py-3 px-4">SG-DL-Express</td>
+<td class="py-3 px-4">Ho Chi Minh</td>
+<td class="py-3 px-4">Da Lat</td>
+<td class="py-3 px-4">24/10/2024</td>
+<td class="py-3 px-4">22:00</td>
+<td class="py-3 px-4 text-right font-semibold">350,000 ₫</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center justify-center px-2 py-1 rounded bg-[#DCFCE7] text-[#166534] font-label-md text-[11px] font-bold">
+                                        12
+                                    </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="bg-surface-bright border border-outline-variant text-primary px-3 py-1.5 rounded hover:bg-surface-container transition-colors text-[13px] font-semibold inline-flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">book_online</span>
+                                        Đặt vé
+                                    </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest hover:bg-[#F1F5F9] transition-colors group">
+<td class="py-3 px-4 font-mono text-xs font-semibold">CX-1025</td>
+<td class="py-3 px-4">HN-SP-Night</td>
+<td class="py-3 px-4">Hanoi</td>
+<td class="py-3 px-4">Sapa</td>
+<td class="py-3 px-4">24/10/2024</td>
+<td class="py-3 px-4">21:30</td>
+<td class="py-3 px-4 text-right font-semibold">400,000 ₫</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center justify-center px-2 py-1 rounded bg-[#FEF9C3] text-[#854D0E] font-label-md text-[11px] font-bold">
+                                        3
+                                    </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="bg-surface-bright border border-outline-variant text-primary px-3 py-1.5 rounded hover:bg-surface-container transition-colors text-[13px] font-semibold inline-flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">book_online</span>
+                                        Đặt vé
+                                    </button>
+</td>
+</tr>
+<!-- Row 3 (Full) -->
+<tr class="hover:bg-surface-container-lowest hover:bg-[#F1F5F9] transition-colors group bg-surface-container-lowest/50">
+<td class="py-3 px-4 font-mono text-xs font-semibold text-outline">CX-1026</td>
+<td class="py-3 px-4 text-on-surface-variant">DN-HUE-Day</td>
+<td class="py-3 px-4 text-on-surface-variant">Da Nang</td>
+<td class="py-3 px-4 text-on-surface-variant">Hue</td>
+<td class="py-3 px-4 text-on-surface-variant">25/10/2024</td>
+<td class="py-3 px-4 text-on-surface-variant">08:00</td>
+<td class="py-3 px-4 text-right font-semibold text-on-surface-variant">150,000 ₫</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center justify-center px-2 py-1 rounded bg-[#FEE2E2] text-[#991B1B] font-label-md text-[11px] font-bold">
+                                        0
+                                    </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="bg-surface-variant text-outline px-3 py-1.5 rounded cursor-not-allowed text-[13px] font-semibold inline-flex items-center gap-1 opacity-70" disabled="">
+                                        Hết vé
+                                    </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-lowest hover:bg-[#F1F5F9] transition-colors group">
+<td class="py-3 px-4 font-mono text-xs font-semibold">CX-1027</td>
+<td class="py-3 px-4">SG-VT-VIP</td>
+<td class="py-3 px-4">Ho Chi Minh</td>
+<td class="py-3 px-4">Vung Tau</td>
+<td class="py-3 px-4">25/10/2024</td>
+<td class="py-3 px-4">10:00</td>
+<td class="py-3 px-4 text-right font-semibold">200,000 ₫</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center justify-center px-2 py-1 rounded bg-[#DCFCE7] text-[#166534] font-label-md text-[11px] font-bold">
+                                        24
+                                    </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="bg-surface-bright border border-outline-variant text-primary px-3 py-1.5 rounded hover:bg-surface-container transition-colors text-[13px] font-semibold inline-flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">book_online</span>
+                                        Đặt vé
+                                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="w-full py-xl px-md flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto border-t border-outline-variant bg-surface-container-low mt-auto">
+<div class="font-title-sm text-title-sm font-black text-primary mb-4 md:mb-0">
+                BusTicket Pro
+            </div>
+<div class="flex flex-wrap justify-center gap-4 text-on-surface-variant font-body-sm text-body-sm mb-4 md:mb-0">
+<a class="hover:text-primary underline transition-all opacity-80 hover:opacity-100" href="#">About System</a>
+<a class="hover:text-primary underline transition-all opacity-80 hover:opacity-100" href="#">Database Schema</a>
+<a class="hover:text-primary underline transition-all opacity-80 hover:opacity-100" href="#">API Docs</a>
+<a class="hover:text-primary underline transition-all opacity-80 hover:opacity-100" href="#">Support</a>
+</div>
+<div class="text-on-surface-variant font-body-sm text-body-sm opacity-80 text-center md:text-right">
+                © 2024 BusTicket Pro Database Project
+            </div>
+</footer>
+</main>
+</body></html>

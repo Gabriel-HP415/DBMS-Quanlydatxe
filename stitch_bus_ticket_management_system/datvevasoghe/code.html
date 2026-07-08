@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking - BusTicket Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#c4c7c9",
+                      "on-tertiary-container": "#eff1f3",
+                      "on-primary-fixed": "#00174b",
+                      "surface-variant": "#d8e3fb",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-tint": "#0053db",
+                      "secondary-fixed": "#d3e4fe",
+                      "inverse-surface": "#263143",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "surface": "#f9f9ff",
+                      "on-tertiary": "#ffffff",
+                      "surface-bright": "#f9f9ff",
+                      "on-primary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-surface-variant": "#434655",
+                      "on-secondary-fixed": "#0b1c30",
+                      "outline": "#737686",
+                      "on-tertiary-fixed-variant": "#444749",
+                      "surface-container": "#e7eeff",
+                      "secondary-container": "#d0e1fb",
+                      "on-surface": "#111c2d",
+                      "on-background": "#111c2d",
+                      "surface-container-highest": "#d8e3fb",
+                      "on-secondary-container": "#54647a",
+                      "surface-container-low": "#f0f3ff",
+                      "surface-container-high": "#dee8ff",
+                      "inverse-on-surface": "#ecf1ff",
+                      "surface-dim": "#cfdaf2",
+                      "on-primary-container": "#eeefff",
+                      "outline-variant": "#c3c6d7",
+                      "on-secondary": "#ffffff",
+                      "primary-container": "#2563eb",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "secondary": "#505f76",
+                      "primary": "#004ac6",
+                      "on-error": "#ffffff",
+                      "inverse-primary": "#b4c5ff",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "on-tertiary-fixed": "#191c1e",
+                      "tertiary-container": "#6b6e70",
+                      "tertiary-fixed": "#e0e3e5",
+                      "background": "#f9f9ff",
+                      "on-error-container": "#93000a",
+                      "primary-fixed": "#dbe1ff",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "tertiary": "#525657"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "md": "16px",
+                      "container-max": "1280px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "title-sm": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "table-data": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "title-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "table-data": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "450"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .seat {
+            transition: all 0.2s ease;
+        }
+        .seat:hover:not(.booked) {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+        .seat.available {
+            border: 2px solid #22c55e;
+            background-color: #ffffff;
+        }
+        .seat.booked {
+            background-color: #f1f5f9;
+            color: #ef4444;
+            cursor: not-allowed;
+            position: relative;
+        }
+        .seat.booked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -10%;
+            width: 120%;
+            height: 2px;
+            background-color: #ef4444;
+            transform: rotate(-45deg);
+        }
+        .seat.selecting {
+            background-color: #eab308;
+            color: #000000;
+            border-color: #eab308;
+        }
+      </style>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen flex overflow-hidden">
+<!-- TopNavBar (Mobile Only) -->
+<header class="md:hidden bg-surface flex justify-between items-center w-full px-md h-16 border-b border-outline-variant z-20 absolute top-0 w-full">
+<div class="text-title-sm font-title-sm font-bold text-primary">BusTicket Pro</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary active:scale-95 transition-transform cursor-pointer">account_circle</span>
+</div>
+</header>
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col bg-surface fixed left-0 top-0 h-full w-[240px] border-r border-outline-variant p-md gap-sm z-20">
+<div class="mb-lg">
+<div class="font-headline-md text-headline-md text-primary font-bold">BusTicket Pro</div>
+<div class="font-label-md text-label-md text-on-surface-variant mt-xs">Management System</div>
+</div>
+<div class="flex flex-col gap-xs w-full">
+<a class="flex items-center gap-sm px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-sm rounded-lg bg-secondary-container text-on-secondary-container font-bold active:translate-x-1 transition-transform group" href="#">
+<span class="material-symbols-outlined">directions_bus</span>
+<span class="font-label-md text-label-md">Trips</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">confirmation_number</span>
+<span class="font-label-md text-label-md">My Tickets</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">admin_panel_settings</span>
+<span class="font-label-md text-label-md">Admin</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full h-full overflow-y-auto mt-16 md:mt-0 md:ml-[240px] bg-background relative">
+<div class="max-w-container-max mx-auto p-md md:p-lg lg:p-xl w-full h-full pb-32">
+<div class="mb-lg flex items-center gap-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors flex items-center" href="#"><span class="material-symbols-outlined text-[20px]">arrow_back</span> <span class="font-label-md text-label-md ml-xs uppercase">Back to Trips</span></a>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-xl font-bold tracking-tight">Booking Details</h1>
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-lg lg:gap-xl">
+<!-- Left Column: Form & Summary -->
+<div class="xl:col-span-7 flex flex-col gap-lg">
+<!-- Trip Summary Card -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm">
+<h2 class="font-title-sm text-title-sm text-on-surface mb-md pb-sm border-b border-outline-variant flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">route</span> Trip Summary
+                        </h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-xs uppercase">Route</label>
+<div class="font-body-md text-body-md text-on-surface font-semibold">New York (JFK) <span class="material-symbols-outlined text-[16px] mx-xs align-middle">arrow_forward</span> Boston (BOS)</div>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-xs uppercase">Date &amp; Time</label>
+<div class="font-body-md text-body-md text-on-surface font-semibold">Oct 24, 2024 • 08:30 AM</div>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-xs uppercase">Bus Type</label>
+<div class="font-body-md text-body-md text-on-surface">Luxury Sleeper (40 Seats)</div>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-xs uppercase">Base Price</label>
+<div class="font-body-md text-body-md text-on-surface font-semibold text-primary">$45.00 <span class="text-on-surface-variant font-normal text-[12px]">/seat</span></div>
+</div>
+</div>
+</section>
+<!-- Customer Info Form -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm">
+<h2 class="font-title-sm text-title-sm text-on-surface mb-md pb-sm border-b border-outline-variant flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">person</span> Customer Information
+                        </h2>
+<form class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<div class="sm:col-span-2">
+<label class="font-label-md text-label-md text-on-surface-variant block mb-xs uppercase" for="name">Full Name *</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-md py-sm font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow" id="name" name="name" placeholder="Enter customer name" required="" type="text"/>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-xs uppercase" for="phone">Phone Number *</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-md py-sm font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow" id="phone" name="phone" placeholder="+1 (555) 000-0000" required="" type="tel"/>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-xs uppercase" for="email">Email Address</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-md py-sm font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow" id="email" name="email" placeholder="customer@example.com" type="email"/>
+</div>
+</form>
+</section>
+</div>
+<!-- Right Column: Seat Map & Checkout -->
+<div class="xl:col-span-5 flex flex-col gap-lg">
+<!-- Interactive Seat Map -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm flex flex-col items-center">
+<h2 class="font-title-sm text-title-sm text-on-surface mb-md pb-sm border-b border-outline-variant w-full flex items-center justify-between">
+<span class="flex items-center gap-sm"><span class="material-symbols-outlined text-primary">airline_seat_recline_normal</span> Select Seats</span>
+<span class="font-label-md text-label-md bg-primary-container text-on-primary-fixed px-sm py-xs rounded-full">Front of Bus</span>
+</h2>
+<!-- Legend -->
+<div class="flex justify-center gap-md mb-lg w-full">
+<div class="flex items-center gap-xs font-label-md text-label-md">
+<div class="w-4 h-4 rounded border-2 border-[#22c55e] bg-white"></div> Available
+                            </div>
+<div class="flex items-center gap-xs font-label-md text-label-md">
+<div class="w-4 h-4 rounded bg-[#f1f5f9] relative overflow-hidden flex items-center justify-center">
+<div class="absolute w-[120%] h-[2px] bg-[#ef4444] rotate-[-45deg]"></div>
+</div> Booked
+                            </div>
+<div class="flex items-center gap-xs font-label-md text-label-md">
+<div class="w-4 h-4 rounded bg-[#eab308] border border-[#eab308]"></div> Selecting
+                            </div>
+</div>
+<!-- Bus Layout -->
+<div class="bg-surface-container border-2 border-outline-variant rounded-[32px] p-md w-full max-w-[320px] relative">
+<!-- Driver Area -->
+<div class="flex justify-end mb-md pr-md pb-sm border-b-2 border-outline-variant border-dashed">
+<span class="material-symbols-outlined text-on-surface-variant text-[32px]">directions_run</span>
+</div>
+<!-- Seats Grid -->
+<div class="grid grid-cols-4 gap-x-sm gap-y-md justify-items-center">
+<!-- Row 1 -->
+<div class="seat available w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data text-on-surface-variant select-none">A1</div>
+<div class="seat available w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data text-on-surface-variant select-none mr-lg">A2</div>
+<div class="seat booked w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data select-none">B1</div>
+<div class="seat booked w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data select-none">B2</div>
+<!-- Row 2 -->
+<div class="seat available w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data text-on-surface-variant select-none">A3</div>
+<div class="seat selecting w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data font-bold select-none mr-lg">A4</div>
+<div class="seat available w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data text-on-surface-variant select-none">B3</div>
+<div class="seat available w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data text-on-surface-variant select-none">B4</div>
+<!-- Row 3 -->
+<div class="seat available w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data text-on-surface-variant select-none">A5</div>
+<div class="seat available w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data text-on-surface-variant select-none mr-lg">A6</div>
+<div class="seat booked w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data select-none">B5</div>
+<div class="seat available w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data text-on-surface-variant select-none">B6</div>
+<!-- Row 4 -->
+<div class="seat available w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data text-on-surface-variant select-none">A7</div>
+<div class="seat available w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data text-on-surface-variant select-none mr-lg">A8</div>
+<div class="seat available w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data text-on-surface-variant select-none">B7</div>
+<div class="seat available w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data text-on-surface-variant select-none">B8</div>
+<!-- Row 5 -->
+<div class="seat available w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data text-on-surface-variant select-none">A9</div>
+<div class="seat available w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data text-on-surface-variant select-none mr-lg">A10</div>
+<div class="seat booked w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data select-none">B9</div>
+<div class="seat booked w-12 h-12 rounded-lg flex items-center justify-center font-table-data text-table-data select-none">B10</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Sticky Bottom Actions -->
+<div class="fixed bottom-0 left-0 md:left-[240px] right-0 bg-surface border-t border-outline-variant p-md shadow-[0_-4px_12px_rgba(0,0,0,0.05)] z-30">
+<div class="max-w-container-max mx-auto flex flex-col sm:flex-row justify-between items-center gap-md">
+<div class="flex items-center gap-lg w-full sm:w-auto">
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase block">Selected Seats</span>
+<span class="font-title-sm text-title-sm font-bold text-on-surface">A4</span>
+</div>
+<div class="h-8 w-px bg-outline-variant hidden sm:block"></div>
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase block">Total Price</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">$45.00</span>
+</div>
+</div>
+<div class="flex gap-sm w-full sm:w-auto">
+<button class="flex-1 sm:flex-none px-lg py-sm rounded-lg bg-surface border border-outline-variant text-on-surface font-label-md text-label-md uppercase tracking-wider hover:bg-surface-container-low transition-colors">
+                            Hủy
+                        </button>
+<button class="flex-1 sm:flex-none px-lg py-sm rounded-lg bg-primary-container text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">check_circle</span> Xác nhận đặt vé
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple seat selection interaction script
+        document.querySelectorAll('.seat.available, .seat.selecting').forEach(seat => {
+            seat.addEventListener('click', function() {
+                if (this.classList.contains('available')) {
+                    this.classList.remove('available');
+                    this.classList.add('selecting');
+                    this.classList.add('font-bold');
+                    this.style.borderColor = '#eab308';
+                } else if (this.classList.contains('selecting')) {
+                    this.classList.remove('selecting');
+                    this.classList.remove('font-bold');
+                    this.classList.add('available');
+                    this.style.borderColor = '#22c55e';
+                }
+            });
+        });
+    </script>
+</body></html>

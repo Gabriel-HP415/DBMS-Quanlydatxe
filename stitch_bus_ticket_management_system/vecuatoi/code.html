@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Tickets - BusTicket Pro</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed-dim": "#c4c7c9",
+                        "on-tertiary-container": "#eff1f3",
+                        "on-primary-fixed": "#00174b",
+                        "surface-variant": "#d8e3fb",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "secondary-fixed": "#d3e4fe",
+                        "inverse-surface": "#263143",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface": "#f9f9ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f9f9ff",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#434655",
+                        "on-secondary-fixed": "#0b1c30",
+                        "outline": "#737686",
+                        "on-tertiary-fixed-variant": "#444749",
+                        "surface-container": "#e7eeff",
+                        "secondary-container": "#d0e1fb",
+                        "on-surface": "#111c2d",
+                        "on-background": "#111c2d",
+                        "surface-container-highest": "#d8e3fb",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container-high": "#dee8ff",
+                        "inverse-on-surface": "#ecf1ff",
+                        "surface-dim": "#cfdaf2",
+                        "on-primary-container": "#eeefff",
+                        "outline-variant": "#c3c6d7",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "secondary": "#505f76",
+                        "primary": "#004ac6",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#b4c5ff",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-tertiary-fixed": "#191c1e",
+                        "tertiary-container": "#6b6e70",
+                        "tertiary-fixed": "#e0e3e5",
+                        "background": "#f9f9ff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#dbe1ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "tertiary": "#525657"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "base": "4px",
+                        "md": "16px",
+                        "container-max": "1280px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "gutter": "16px"
+                    },
+                    fontFamily: {
+                        "body-sm": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "table-data": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "title-sm": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "table-data": ["14px", { "lineHeight": "20px", "fontWeight": "450" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Base styles mapped from typography tokens */
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col md:flex-row">
+<!-- Mobile Top App Bar (Visible only on mobile) -->
+<header class="md:hidden bg-surface border-b border-outline-variant flex justify-between items-center w-full px-md h-16 z-50 sticky top-0">
+<div class="font-title-sm text-title-sm font-bold text-primary">BusTicket Pro</div>
+<button class="text-on-surface p-sm">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Side Navigation Bar (Desktop) - Replicated from JSON -->
+<nav class="hidden md:flex flex-col bg-surface border-r border-outline-variant fixed left-0 top-0 h-full w-[240px] p-md gap-sm z-40">
+<!-- Brand Header -->
+<div class="mb-lg px-sm pt-sm flex flex-col gap-xs">
+<h1 class="font-headline-md text-headline-md text-primary">BusTicket Pro</h1>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Management System</span>
+</div>
+<!-- Navigation Links -->
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">home</span>
+            Home
+        </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">directions_bus</span>
+            Trips
+        </a>
+<!-- Active Tab: My Tickets -->
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">confirmation_number</span>
+            My Tickets
+        </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+            Admin
+        </a>
+<div class="mt-auto">
+<div class="flex items-center gap-sm px-sm py-sm border-t border-outline-variant">
+<img class="w-8 h-8 rounded-full object-cover bg-surface-container-highest" data-alt="A small, circular avatar portrait of a professional system administrator in a well-lit office environment, conveying a sense of organized control and modern minimalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGmXRxIJPTTxd-l2iDKPH-xSUyG0EZFrpwPOqmrMjQRIpbiDfStKSyOoHGgf43CiS9zS01AG3G6gyiHASlG_nOcfhh_OIWPJ5xYYYGWoakcU9eC2WueSkhSI-W9_VqRDq9Ygr_fmYyLStQZE2--BM2FWMdshOgue5rPi5VdOhdQOtzyQe_8sVCCLcGBsRd3SUQcmHcznd6d7HmU7DTGScn6pkpa8PVlkhXRs31YIaTOcFhyaLJlz0aSll1C3Oa4uyRBydHqFFQRuUt"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Current User</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-[240px] flex flex-col min-h-screen">
+<!-- Page Content -->
+<div class="flex-1 w-full max-w-container-max mx-auto p-md md:p-xl">
+<!-- Page Header -->
+<div class="mb-lg flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs">My Tickets</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">View your booking history and manage active tickets.</p>
+</div>
+</div>
+<!-- Table Container (Level 1 Elevation: White surface, 1px border, no shadow) -->
+<div class="bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<!-- Table Header -->
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="py-sm px-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Mã vé</th>
+<th class="py-sm px-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Khách hàng</th>
+<th class="py-sm px-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Chuyến xe</th>
+<th class="py-sm px-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Ghế</th>
+<th class="py-sm px-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Ngày đặt</th>
+<th class="py-sm px-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-center">Trạng thái</th>
+<th class="py-sm px-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-right">Hành động</th>
+</tr>
+</thead>
+<!-- Table Body -->
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1: Active/Paid Ticket -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-md font-table-data text-table-data text-on-surface font-medium">#BT-0892</td>
+<td class="py-3 px-md font-table-data text-table-data text-on-surface-variant">Nguyen Van A</td>
+<td class="py-3 px-md font-table-data text-table-data text-on-surface-variant">Hanoi - Sapa</td>
+<td class="py-3 px-md font-table-data text-table-data text-on-surface-variant">A12</td>
+<td class="py-3 px-md font-table-data text-table-data text-on-surface-variant">Oct 12, 2024</td>
+<td class="py-3 px-md text-center">
+<!-- Tinted Badge for Status -->
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-md text-label-md">
+                                        Paid
+                                    </span>
+</td>
+<td class="py-3 px-md text-right">
+<button class="inline-flex items-center gap-1 text-error font-label-md text-label-md hover:underline transition-all">
+<span class="material-symbols-outlined text-[16px]">cancel</span>
+                                        Hủy vé
+                                    </button>
+</td>
+</tr>
+<!-- Row 2: Active/Paid Ticket -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-md font-table-data text-table-data text-on-surface font-medium">#BT-0893</td>
+<td class="py-3 px-md font-table-data text-table-data text-on-surface-variant">Nguyen Van A</td>
+<td class="py-3 px-md font-table-data text-table-data text-on-surface-variant">Hanoi - Sapa</td>
+<td class="py-3 px-md font-table-data text-table-data text-on-surface-variant">A13</td>
+<td class="py-3 px-md font-table-data text-table-data text-on-surface-variant">Oct 12, 2024</td>
+<td class="py-3 px-md text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-md text-label-md">
+                                        Paid
+                                    </span>
+</td>
+<td class="py-3 px-md text-right">
+<button class="inline-flex items-center gap-1 text-error font-label-md text-label-md hover:underline transition-all">
+<span class="material-symbols-outlined text-[16px]">cancel</span>
+                                        Hủy vé
+                                    </button>
+</td>
+</tr>
+<!-- Row 3: Cancelled Ticket -->
+<tr class="hover:bg-surface-container-low transition-colors group opacity-60">
+<td class="py-3 px-md font-table-data text-table-data text-on-surface font-medium">#BT-0745</td>
+<td class="py-3 px-md font-table-data text-table-data text-on-surface-variant">Nguyen Van A</td>
+<td class="py-3 px-md font-table-data text-table-data text-on-surface-variant">Hue - Danang</td>
+<td class="py-3 px-md font-table-data text-table-data text-on-surface-variant">B04</td>
+<td class="py-3 px-md font-table-data text-table-data text-on-surface-variant">Sep 28, 2024</td>
+<td class="py-3 px-md text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-md text-label-md">
+                                        Cancelled
+                                    </span>
+</td>
+<td class="py-3 px-md text-right">
+<!-- Action disabled/hidden for cancelled tickets -->
+<span class="font-label-md text-label-md text-outline">N/A</span>
+</td>
+</tr>
+<!-- Row 4: Cancelled Ticket -->
+<tr class="hover:bg-surface-container-low transition-colors group opacity-60">
+<td class="py-3 px-md font-table-data text-table-data text-on-surface font-medium">#BT-0612</td>
+<td class="py-3 px-md font-table-data text-table-data text-on-surface-variant">Nguyen Van A</td>
+<td class="py-3 px-md font-table-data text-table-data text-on-surface-variant">Saigon - Dalat</td>
+<td class="py-3 px-md font-table-data text-table-data text-on-surface-variant">C22</td>
+<td class="py-3 px-md font-table-data text-table-data text-on-surface-variant">Aug 15, 2024</td>
+<td class="py-3 px-md text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-md text-label-md">
+                                        Cancelled
+                                    </span>
+</td>
+<td class="py-3 px-md text-right">
+<span class="font-label-md text-label-md text-outline">N/A</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Footer - Mapped from JSON -->
+<footer class="mt-auto bg-surface-container-low border-t border-outline-variant w-full py-xl px-md flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto">
+<div class="font-title-sm text-title-sm font-black text-primary mb-md md:mb-0">
+                © 2024 BusTicket Pro Database Project
+            </div>
+<div class="flex flex-wrap justify-center gap-md font-body-sm text-body-sm">
+<a class="text-on-surface-variant hover:text-primary underline transition-all opacity-80 hover:opacity-100" href="#">About System</a>
+<a class="text-on-surface-variant hover:text-primary underline transition-all opacity-80 hover:opacity-100" href="#">Database Schema</a>
+<a class="text-on-surface-variant hover:text-primary underline transition-all opacity-80 hover:opacity-100" href="#">API Docs</a>
+<a class="text-on-surface-variant hover:text-primary underline transition-all opacity-80 hover:opacity-100" href="#">Support</a>
+</div>
+</footer>
+</main>
+</body></html>

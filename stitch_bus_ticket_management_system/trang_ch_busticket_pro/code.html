@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BusTicket Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#c4c7c9",
+                      "on-tertiary-container": "#eff1f3",
+                      "on-primary-fixed": "#00174b",
+                      "surface-variant": "#d8e3fb",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-tint": "#0053db",
+                      "secondary-fixed": "#d3e4fe",
+                      "inverse-surface": "#263143",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "surface": "#f9f9ff",
+                      "on-tertiary": "#ffffff",
+                      "surface-bright": "#f9f9ff",
+                      "on-primary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-surface-variant": "#434655",
+                      "on-secondary-fixed": "#0b1c30",
+                      "outline": "#737686",
+                      "on-tertiary-fixed-variant": "#444749",
+                      "surface-container": "#e7eeff",
+                      "secondary-container": "#d0e1fb",
+                      "on-surface": "#111c2d",
+                      "on-background": "#111c2d",
+                      "surface-container-highest": "#d8e3fb",
+                      "on-secondary-container": "#54647a",
+                      "surface-container-low": "#f0f3ff",
+                      "surface-container-high": "#dee8ff",
+                      "inverse-on-surface": "#ecf1ff",
+                      "surface-dim": "#cfdaf2",
+                      "on-primary-container": "#eeefff",
+                      "outline-variant": "#c3c6d7",
+                      "on-secondary": "#ffffff",
+                      "primary-container": "#2563eb",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "secondary": "#505f76",
+                      "primary": "#004ac6",
+                      "on-error": "#ffffff",
+                      "inverse-primary": "#b4c5ff",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "on-tertiary-fixed": "#191c1e",
+                      "tertiary-container": "#6b6e70",
+                      "tertiary-fixed": "#e0e3e5",
+                      "background": "#f9f9ff",
+                      "on-error-container": "#93000a",
+                      "primary-fixed": "#dbe1ff",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "tertiary": "#525657"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "md": "16px",
+                      "container-max": "1280px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Inter"],
+                      "title-sm": ["Inter"],
+                      "body-md": ["Inter"],
+                      "table-data": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "label-md": ["Inter"],
+                      "display-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "title-sm": ["18px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "table-data": ["14px", {"lineHeight": "20px", "fontWeight": "450"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+          font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="w-full bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-md h-16 max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary fill-icon text-3xl" data-icon="directions_bus" data-weight="fill">directions_bus</span>
+<span class="text-title-sm font-title-sm font-bold text-primary dark:text-inverse-primary">BusTicket Pro</span>
+</div>
+<nav class="hidden md:flex gap-lg items-center h-full">
+<a class="h-full flex items-center text-primary dark:text-inverse-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">Home</a>
+<a class="h-full flex items-center text-on-surface-variant dark:text-outline-variant hover:text-primary hover:bg-surface-container-low transition-colors px-xs font-label-md text-label-md" href="#">Trips</a>
+<a class="h-full flex items-center text-on-surface-variant dark:text-outline-variant hover:text-primary hover:bg-surface-container-low transition-colors px-xs font-label-md text-label-md" href="#">My Tickets</a>
+<a class="h-full flex items-center text-on-surface-variant dark:text-outline-variant hover:text-primary hover:bg-surface-container-low transition-colors px-xs font-label-md text-label-md" href="#">Admin</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="active:scale-95 transition-transform p-xs rounded-full hover:bg-surface-container-low dark:hover:bg-secondary-container text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero Section with Search Form -->
+<section class="relative w-full min-h-[500px] flex items-center justify-center pt-xl pb-32 px-md">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0 bg-surface-container-high overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A sleek, highly modern luxury intercity bus traveling on a scenic highway during a bright, sunny day. The style is hyper-realistic and clean, suited for a professional light-mode website hero banner. The bus features large tinted windows and aerodynamic design. The surrounding landscape is vibrant but unobtrusive, ensuring the focus remains on modern transportation." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCJdKq8jFGbOQkENTjKa98O1qOjubcftHfDuA0pfraSQnK62kGVaYJjql00V-WD0jQStQ1ZWAgwI-TL3qQ0SXrkxMpzpfEJ6H0DUUnURIJOY0iiQQvDRzpoIvNa6fXgZmDk_hGgKET541jppRdzPId4leY2MF_Mx-KEdbXJ91riH1UdSPmySFMWdVbLAaoLyF_sLHjr1Bbo_fEChDj-07lTlNDI9oEDyv6Lr3GmnyVwaaBHNvISZxAIrorsosYqnKFoI_60KdawTi1L')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface/90 to-surface/40"></div>
+</div>
+<div class="relative z-10 w-full max-w-container-max mx-auto flex flex-col items-start gap-lg">
+<div class="max-w-2xl">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-sm tracking-tight text-balance">
+                        Đặt vé xe khách trực tuyến dễ dàng
+                    </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Fast, reliable, and secure ticket booking for your next journey across the country. Powered by a robust database architecture.
+                    </p>
+</div>
+<!-- Search Form (Bento Style) -->
+<div class="w-full max-w-4xl bg-surface/80 backdrop-blur-md border border-outline-variant rounded-xl p-md shadow-sm mt-md">
+<form class="flex flex-col md:flex-row gap-md items-end">
+<div class="flex-1 w-full">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Departure</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="location_on">location_on</span>
+<input class="w-full pl-10 pr-3 py-sm bg-surface-container-lowest border border-outline-variant rounded-lg text-body-md font-body-md focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition-shadow text-on-surface" placeholder="City or Station" type="text"/>
+</div>
+</div>
+<div class="flex-1 w-full">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Destination</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="pin_drop">pin_drop</span>
+<input class="w-full pl-10 pr-3 py-sm bg-surface-container-lowest border border-outline-variant rounded-lg text-body-md font-body-md focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition-shadow text-on-surface" placeholder="City or Station" type="text"/>
+</div>
+</div>
+<div class="w-full md:w-auto min-w-[200px]">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Date</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="calendar_month">calendar_month</span>
+<input class="w-full pl-10 pr-3 py-sm bg-surface-container-lowest border border-outline-variant rounded-lg text-body-md font-body-md focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition-shadow text-on-surface" type="date"/>
+</div>
+</div>
+<button class="w-full md:w-auto bg-primary text-on-primary font-label-md text-label-md px-lg py-sm rounded-lg hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-xs h-[42px]" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="search">search</span>
+                            Search Trips
+                        </button>
+</form>
+</div>
+</div>
+</section>
+<!-- Featured Trips Section -->
+<section class="w-full max-w-container-max mx-auto py-xl px-md">
+<div class="flex items-center justify-between mb-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface">Popular Routes</h2>
+<a class="text-primary font-label-md text-label-md hover:underline flex items-center gap-xs" href="#">
+                    View all <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Card 1 -->
+<div class="group bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
+<div class="h-48 w-full bg-surface-container-highest relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A stunning, high-quality photograph of the Golden Bridge in Ba Na Hills, Da Nang, featuring the iconic giant stone hands holding the pedestrian walkway. Bright daylight, clear blue sky, vibrant colors. Shot with professional landscape photography aesthetics, suitable for a light-mode travel website thumbnail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm68HoMnDJx_ZqEB3Z0ODDGgtibjcV8Z7CO9KsdN_OJuHO9UrRfaHAiAi_3Q1bOELRtG1WdYJ-NlTERcff1aNkMZLCumBqcX3SVkUk_Mww7C13CQCb4doLupZaVaxVGDb4xuotFQBCJLDk4MVL2DdGjazal4I6nOgM5Jf3lun3b42kaoeEPO70-2rC06woHcCFkjJIi1HqFbRrt1GIjEq2o-NYtpXYCg9MlpETe9cSztzOuot0DyPCSQxHlXFwZD918QQCLk6myeH3"/>
+<div class="absolute top-sm right-sm bg-surface/90 backdrop-blur text-primary font-label-md text-label-md px-sm py-xs rounded-md border border-outline-variant">
+                            From 350k VND
+                        </div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex items-center gap-sm mb-xs">
+<span class="font-title-sm text-title-sm text-on-surface">Hà Nội</span>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="sync_alt">sync_alt</span>
+<span class="font-title-sm text-title-sm text-on-surface">Đà Nẵng</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-xs mt-auto">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span> 14h 30m avg. duration
+                        </p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
+<div class="h-48 w-full bg-surface-container-highest relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A beautiful, serene view of Xuan Huong Lake in Da Lat at sunrise. Pine trees line the misty hills in the background. Soft, warm morning light creates a peaceful atmosphere. High-resolution, professional travel photography style, perfect for a modern website card." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs7R45W37KgHrymeIGC7VF5lFYZbae0srthgqec6L2LIHx1o550EWdHaYFDAwY12Jy7qxOVpX2v8X8yP2jfwCOAkm3vbboSCzCHZHJS1FZQHcsM2UUcx-hnFhUqEBmY3IxOsuR1PjRIftUWSnZMUW4QwV9gbQ6kVRmL5KtiClO60MmrWBYNh4nDoSAtpbiL1fnoAYTqVMiSk-qFggO1lkhqhI8bWnrZHY6wd-ybOM1xOH2K_1Hv7Yrf9W1rNOceogkzX8cQglhO6nV"/>
+<div class="absolute top-sm right-sm bg-surface/90 backdrop-blur text-primary font-label-md text-label-md px-sm py-xs rounded-md border border-outline-variant">
+                            From 280k VND
+                        </div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex items-center gap-sm mb-xs">
+<span class="font-title-sm text-title-sm text-on-surface">TP.HCM</span>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="sync_alt">sync_alt</span>
+<span class="font-title-sm text-title-sm text-on-surface">Đà Lạt</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-xs mt-auto">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span> 8h 15m avg. duration
+                        </p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
+<div class="h-48 w-full bg-surface-container-highest relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A breathtaking view of terraced rice fields in Sapa, Vietnam, glowing vividly green under a clear sky. High contrast, sharp details, taken with a wide-angle lens. The aesthetic is clean, inviting, and professional, ideal for a modern travel portal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLpj2EJgWoilkNy0S3jgc5e89uJXfHhJu0nBzsV0quQP1nOIwQs6auLv186g39Z-E933ui8GcLbgEtJkYIPzBkZ5HunZ2ojyPVPRM-KvP1zjRpPksbpzTfWo1D_E5s3uEIBpGKkMj93zmnmbW37Ei6yzkLAMiRu7zvoV3RZN5-sWHN_-5VbnMO78BsdQxGiSQ33fsTC_xNZcwyM7fWhx1W0QZw_nSqzIDrvOei-VkOqjcOmqigpfLpy0l30HE6Q-Q94O00_u_33Zj8"/>
+<div class="absolute top-sm right-sm bg-surface/90 backdrop-blur text-primary font-label-md text-label-md px-sm py-xs rounded-md border border-outline-variant">
+                            From 400k VND
+                        </div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex items-center gap-sm mb-xs">
+<span class="font-title-sm text-title-sm text-on-surface">Hà Nội</span>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="sync_alt">sync_alt</span>
+<span class="font-title-sm text-title-sm text-on-surface">Sapa</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-xs mt-auto">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span> 6h 00m avg. duration
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- About / DB Project Context -->
+<section class="w-full bg-surface-container-low border-t border-outline-variant py-xl px-md mt-lg">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-md">About BusTicket Pro System</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">
+                        This platform is designed as a robust demonstration of modern database management and relational data structuring. It simulates a high-utility management environment prioritizing the speed of data entry, secure transactional integrity, and the legibility of complex bus scheduling information.
+                    </p>
+<ul class="space-y-sm">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="database">database</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Optimized schema for real-time seat availability tracking.</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="lock">lock</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">ACID-compliant transactional operations for secure bookings.</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="speed">speed</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Designed for administrative efficiency and scalability.</span>
+</li>
+</ul>
+</div>
+<div class="bg-surface border border-outline-variant rounded-xl p-lg shadow-sm flex items-center justify-center min-h-[250px] relative overflow-hidden">
+<!-- Subtle decorative tech pattern -->
+<div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, #004ac6 0, #004ac6 1px, transparent 0, transparent 50%); background-size: 10px 10px;"></div>
+<div class="text-center relative z-10">
+<span class="material-symbols-outlined text-6xl text-outline mb-sm block" data-icon="schema">schema</span>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">System Architecture Module</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-low dark:bg-inverse-surface border-t border-outline-variant dark:border-outline mt-auto">
+<div class="w-full py-xl px-md flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto">
+<div class="font-title-sm text-title-sm font-black text-primary dark:text-inverse-primary mb-md md:mb-0">
+                BusTicket Pro
+            </div>
+<nav class="flex flex-wrap gap-md justify-center mb-md md:mb-0">
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary underline transition-all opacity-80 hover:opacity-100" href="#">About System</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary underline transition-all opacity-80 hover:opacity-100" href="#">Database Schema</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary underline transition-all opacity-80 hover:opacity-100" href="#">API Docs</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary underline transition-all opacity-80 hover:opacity-100" href="#">Support</a>
+</nav>
+<div class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline-variant">
+                © 2024 BusTicket Pro Database Project
+            </div>
+</div>
+</footer>
+</body></html>

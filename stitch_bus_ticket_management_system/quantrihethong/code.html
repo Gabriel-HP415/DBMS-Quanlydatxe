@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Dashboard - BusTicket Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c4c7c9",
+                        "on-tertiary-container": "#eff1f3",
+                        "on-primary-fixed": "#00174b",
+                        "surface-variant": "#d8e3fb",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "secondary-fixed": "#d3e4fe",
+                        "inverse-surface": "#263143",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface": "#f9f9ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f9f9ff",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#434655",
+                        "on-secondary-fixed": "#0b1c30",
+                        "outline": "#737686",
+                        "on-tertiary-fixed-variant": "#444749",
+                        "surface-container": "#e7eeff",
+                        "secondary-container": "#d0e1fb",
+                        "on-surface": "#111c2d",
+                        "on-background": "#111c2d",
+                        "surface-container-highest": "#d8e3fb",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container-high": "#dee8ff",
+                        "inverse-on-surface": "#ecf1ff",
+                        "surface-dim": "#cfdaf2",
+                        "on-primary-container": "#eeefff",
+                        "outline-variant": "#c3c6d7",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "secondary": "#505f76",
+                        "primary": "#004ac6",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#b4c5ff",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-tertiary-fixed": "#191c1e",
+                        "tertiary-container": "#6b6e70",
+                        "tertiary-fixed": "#e0e3e5",
+                        "background": "#f9f9ff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#dbe1ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "tertiary": "#525657"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "md": "16px",
+                        "container-max": "1280px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "table-data": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "title-sm": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "table-data": ["14px", { "lineHeight": "20px", "fontWeight": "450" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="h-full font-sans antialiased text-on-surface bg-background flex flex-col md:flex-row">
+<!-- Mobile Nav (TopAppBar - Replaces BottomNavBar for structural clarity in admin, hidden md) -->
+<header class="md:hidden flex justify-between items-center w-full px-md h-16 bg-surface border-b border-outline-variant fixed top-0 z-50">
+<div class="font-headline-md text-headline-md text-primary font-bold tracking-tight">BusTicket Pro</div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- SideNavBar (Hidden on Mobile, Visible on md+) -->
+<nav class="hidden md:flex flex-col h-full w-[240px] bg-surface border-r border-outline-variant p-md gap-sm fixed left-0 top-0 shrink-0 z-40 overflow-y-auto pt-8">
+<div class="mb-8 px-2">
+<h1 class="font-headline-md text-headline-md text-primary font-bold tracking-tight">BusTicket Pro</h1>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Management System</p>
+</div>
+<div class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-on-secondary-fixed-variant transition-all rounded-lg active:translate-x-1 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-on-secondary-fixed-variant transition-all rounded-lg active:translate-x-1 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">directions_bus</span>
+<span class="font-label-md text-label-md">Trips</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-on-secondary-fixed-variant transition-all rounded-lg active:translate-x-1 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">confirmation_number</span>
+<span class="font-label-md text-label-md">My Tickets</span>
+</a>
+<!-- Active Tab -->
+<a class="flex items-center gap-3 px-3 py-2 bg-secondary-container dark:bg-secondary-fixed-dim text-on-secondary-container rounded-lg font-bold transition-all active:translate-x-1 relative" href="#">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-r-full"></div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+<span class="font-label-md text-label-md">Admin</span>
+</a>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant">
+<div class="flex items-center gap-3 px-2 py-2">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm font-semibold">Admin User</p>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">admin@system.com</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full md:ml-[240px] pt-16 md:pt-0 min-h-screen bg-background flex flex-col">
+<div class="flex-1 p-4 md:p-lg lg:p-xl max-w-container-max mx-auto w-full space-y-lg">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface">Database Management</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage customers, trips, buses, and ticketing records.</p>
+</div>
+<div class="flex gap-2">
+<button class="inline-flex items-center gap-2 px-md py-sm bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant text-on-surface rounded-lg font-title-sm text-title-sm transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2">
+<span class="material-symbols-outlined text-lg">download</span>
+                        Export
+                    </button>
+<button class="inline-flex items-center gap-2 px-md py-sm bg-primary hover:bg-on-primary-fixed-variant text-on-primary rounded-lg font-title-sm text-title-sm shadow-sm transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2">
+<span class="material-symbols-outlined text-lg">add</span>
+                        Thêm mới
+                    </button>
+</div>
+</div>
+<!-- Bento Grid: Stats Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Stat Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm relative overflow-hidden group hover:border-primary-container transition-colors">
+<div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<div class="relative z-10">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-2">Total Revenue (MTD)</p>
+<h3 class="font-display-lg text-display-lg text-on-surface">$124,500</h3>
+<div class="flex items-center gap-1 mt-2 text-primary">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-body-sm text-body-sm font-semibold">+12.5% vs last month</span>
+</div>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm relative overflow-hidden group hover:border-primary-container transition-colors">
+<div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary" style="font-variation-settings: 'FILL' 1;">local_activity</span>
+</div>
+<div class="relative z-10">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-2">Total Tickets Sold</p>
+<h3 class="font-display-lg text-display-lg text-on-surface">8,432</h3>
+<div class="flex items-center gap-1 mt-2 text-primary">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-body-sm text-body-sm font-semibold">+5.2% vs last month</span>
+</div>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm relative overflow-hidden group hover:border-primary-container transition-colors">
+<div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary" style="font-variation-settings: 'FILL' 1;">route</span>
+</div>
+<div class="relative z-10">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-2">Active Trips Today</p>
+<h3 class="font-display-lg text-display-lg text-on-surface">145</h3>
+<div class="flex items-center gap-1 mt-2 text-secondary">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="font-body-sm text-body-sm font-medium">42 currently en route</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Tab Navigation for CRUD Sections (Simulated for visual density) -->
+<div class="border-b border-outline-variant">
+<nav aria-label="Tabs" class="-mb-px flex space-x-8">
+<a aria-current="page" class="border-primary text-primary border-b-2 py-4 px-1 text-center font-title-sm text-title-sm" href="#">
+                        Customers
+                    </a>
+<a class="border-transparent text-on-surface-variant hover:text-on-surface hover:border-outline-variant border-b-2 py-4 px-1 text-center font-title-sm text-title-sm transition-colors" href="#">
+                        Trips
+                    </a>
+<a class="border-transparent text-on-surface-variant hover:text-on-surface hover:border-outline-variant border-b-2 py-4 px-1 text-center font-title-sm text-title-sm transition-colors" href="#">
+                        Buses
+                    </a>
+<a class="border-transparent text-on-surface-variant hover:text-on-surface hover:border-outline-variant border-b-2 py-4 px-1 text-center font-title-sm text-title-sm transition-colors" href="#">
+                        Tickets
+                    </a>
+</nav>
+</div>
+<!-- Data Table Section (Customers Focus) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col h-[500px]">
+<!-- Table Header/Toolbar -->
+<div class="p-md border-b border-outline-variant bg-surface flex flex-col sm:flex-row justify-between items-center gap-4">
+<div class="relative w-full sm:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-transparent focus:border-primary focus:ring-1 focus:ring-primary rounded-lg font-body-sm text-body-sm transition-all" placeholder="Search customers..." type="text"/>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span>Showing 1-10 of 256</span>
+<button class="p-1 hover:bg-surface-container-high rounded transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="p-1 hover:bg-surface-container-high rounded transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<!-- Table Content -->
+<div class="overflow-x-auto flex-1">
+<table class="min-w-full divide-y divide-outline-variant">
+<thead class="bg-surface-container-low sticky top-0 z-10">
+<tr>
+<th class="px-md py-sm text-left font-label-md text-label-md text-on-surface-variant uppercase tracking-wider w-12" scope="col">
+<input class="rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+</th>
+<th class="px-md py-sm text-left font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" scope="col">ID</th>
+<th class="px-md py-sm text-left font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" scope="col">Name</th>
+<th class="px-md py-sm text-left font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" scope="col">Email</th>
+<th class="px-md py-sm text-left font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" scope="col">Phone</th>
+<th class="px-md py-sm text-left font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" scope="col">Status</th>
+<th class="px-md py-sm text-right font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" scope="col">Actions</th>
+</tr>
+</thead>
+<tbody class="bg-surface-container-lowest divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-3 whitespace-nowrap">
+<input class="rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-md py-3 whitespace-nowrap font-table-data text-table-data text-on-surface-variant">#CUS-892</td>
+<td class="px-md py-3 whitespace-nowrap font-table-data text-table-data text-on-surface font-medium">Nguyen Van A</td>
+<td class="px-md py-3 whitespace-nowrap font-table-data text-table-data text-on-surface-variant">nva@example.com</td>
+<td class="px-md py-3 whitespace-nowrap font-table-data text-table-data text-on-surface-variant">+84 912 345 678</td>
+<td class="px-md py-3 whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-secondary-container text-on-secondary-container">Active</span>
+</td>
+<td class="px-md py-3 whitespace-nowrap text-right text-sm font-medium">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-secondary hover:text-primary p-1 rounded-full hover:bg-surface-container-high transition-colors" title="Edit">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="text-secondary hover:text-error p-1 rounded-full hover:bg-error-container transition-colors" title="Delete">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-3 whitespace-nowrap">
+<input class="rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-md py-3 whitespace-nowrap font-table-data text-table-data text-on-surface-variant">#CUS-893</td>
+<td class="px-md py-3 whitespace-nowrap font-table-data text-table-data text-on-surface font-medium">Tran Thi B</td>
+<td class="px-md py-3 whitespace-nowrap font-table-data text-table-data text-on-surface-variant">ttb@example.com</td>
+<td class="px-md py-3 whitespace-nowrap font-table-data text-table-data text-on-surface-variant">+84 987 654 321</td>
+<td class="px-md py-3 whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-secondary-container text-on-secondary-container">Active</span>
+</td>
+<td class="px-md py-3 whitespace-nowrap text-right text-sm font-medium">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-secondary hover:text-primary p-1 rounded-full hover:bg-surface-container-high transition-colors" title="Edit">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="text-secondary hover:text-error p-1 rounded-full hover:bg-error-container transition-colors" title="Delete">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-3 whitespace-nowrap">
+<input class="rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-md py-3 whitespace-nowrap font-table-data text-table-data text-on-surface-variant">#CUS-894</td>
+<td class="px-md py-3 whitespace-nowrap font-table-data text-table-data text-on-surface font-medium">Le Van C</td>
+<td class="px-md py-3 whitespace-nowrap font-table-data text-table-data text-on-surface-variant">lvc@example.com</td>
+<td class="px-md py-3 whitespace-nowrap font-table-data text-table-data text-on-surface-variant">+84 901 234 567</td>
+<td class="px-md py-3 whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-surface-variant text-on-surface-variant">Inactive</span>
+</td>
+<td class="px-md py-3 whitespace-nowrap text-right text-sm font-medium">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-secondary hover:text-primary p-1 rounded-full hover:bg-surface-container-high transition-colors" title="Edit">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="text-secondary hover:text-error p-1 rounded-full hover:bg-error-container transition-colors" title="Delete">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Footer (Generated from JSON structure intent, integrated into main layout) -->
+<footer class="mt-auto border-t border-outline-variant bg-surface-container-low py-xl px-md">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="font-title-sm text-title-sm font-black text-primary">BusTicket Pro</div>
+<div class="flex gap-4">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary underline transition-all opacity-80 hover:opacity-100" href="#">About System</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary underline transition-all opacity-80 hover:opacity-100" href="#">Database Schema</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary underline transition-all opacity-80 hover:opacity-100" href="#">API Docs</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary underline transition-all opacity-80 hover:opacity-100" href="#">Support</a>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+                    © 2024 BusTicket Pro Database Project
+                </div>
+</div>
+</footer>
+</main>
+</body></html>
