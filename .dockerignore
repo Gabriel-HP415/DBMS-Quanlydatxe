@@ -1,0 +1,11 @@
+**/node_modules
+**/dist
+**/.git
+**/.env
+**/.env.*
+!**/.env.example
+**/terminals
+docs/node_modules
+stitch_bus_ticket_management_system
+*.md
+!database/README.md

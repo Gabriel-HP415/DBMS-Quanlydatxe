@@ -1,0 +1,15 @@
+import { Request, Response, NextFunction } from 'express';
+export declare function getCustomers(_req: Request, res: Response, next: NextFunction): Promise<void>;
+export declare function createCustomer(req: Request, res: Response, next: NextFunction): Promise<void>;
+export declare function updateCustomer(req: Request, res: Response, next: NextFunction): Promise<void>;
+export declare function deleteCustomer(req: Request, res: Response, next: NextFunction): Promise<void>;
+export declare function getBuses(_req: Request, res: Response, next: NextFunction): Promise<void>;
+export declare function createBus(req: Request, res: Response, next: NextFunction): Promise<void>;
+export declare function updateBus(req: Request, res: Response, next: NextFunction): Promise<void>;
+export declare function deleteBus(req: Request, res: Response, next: NextFunction): Promise<void>;
+export declare function getAdminTrips(_req: Request, res: Response, next: NextFunction): Promise<void>;
+export declare function createTrip(req: Request, res: Response, next: NextFunction): Promise<void>;
+export declare function updateTrip(req: Request, res: Response, next: NextFunction): Promise<void>;
+export declare function deleteTrip(req: Request, res: Response, next: NextFunction): Promise<void>;
+export declare function getRoutes(_req: Request, res: Response, next: NextFunction): Promise<void>;
+export declare function getAdminTickets(_req: Request, res: Response, next: NextFunction): Promise<void>;
